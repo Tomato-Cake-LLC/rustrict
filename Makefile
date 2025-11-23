@@ -15,11 +15,17 @@ false_positives:
 replacements:
 	cargo run --bin replacement_finder --features find_replacements
 
+add_profanity:
+	cargo run --bin add_profanity --features regex
+
 widths:
 	cargo run --bin character_analyzer --release --features imageproc,image,rusttype,walkdir,rayon,unicode-width
 
 test:
 	cargo test --release --features width,pii,serde -- --nocapture
+
+test_curated:
+	cargo test --release --features width,pii,serde -- --nocapture curated
 
 compare:
 	COMPARE=1 make test

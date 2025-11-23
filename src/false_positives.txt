@@ -1,5 +1,6 @@
 # of
 #8
+(litera
 (until
 0 secs
 2 secs
@@ -313,6 +314,7 @@ african zinc
 african zo
 african zs
 afrikaans
+aftermarriage
 agadic
 agapornis
 agen ital
@@ -617,7 +619,7 @@ ana lob
 ana loc
 ana lod
 ana log
-ana lol
+ana lolita
 ana lond
 ana lone
 ana long
@@ -883,7 +885,7 @@ anna lob
 anna loc
 anna lod
 anna log
-anna lol
+anna lolita
 anna lond
 anna lone
 anna long
@@ -1485,10 +1487,13 @@ assignments hit
 assignments lut
 assignments perm
 assignments seeks
+assis tight
 assist fu
 assist its
+assist light
 assist texts
 assist thick
+assist tight
 assist titles
 assist wat
 assist wats
@@ -2666,6 +2671,7 @@ black assuming
 black assumpt
 black assurance
 black assure
+black boys
 black cocktail
 black guyana
 black guys
@@ -3220,6 +3226,7 @@ broomrape
 brotheler
 brothellike
 brothelry
+brown boys
 brushite
 brushlet
 bs cumulative
@@ -3420,6 +3427,7 @@ but trend
 but treo
 but tri
 but trigger
+but troll
 but troop
 but trop
 but trouble
@@ -3555,6 +3563,7 @@ canberra pe
 canberra periodic
 canberra peru
 canberra ping
+candidate anyone
 candidate someone
 candle peer
 candles blan
@@ -4276,6 +4285,7 @@ committees test
 committees ties
 committees tiles
 commix
+commodate anyone
 commodate someone
 commonly fans
 commons publish
@@ -4453,6 +4463,7 @@ cook ker
 cook kevin
 cook key
 cook ki
+cook kissing
 cook kl
 cook kn
 cook ko
@@ -4580,6 +4591,7 @@ count wats
 count watts
 countered skins
 counterflange
+countermarriage
 counterprick
 counters cumulative
 counters ext
@@ -4943,6 +4955,10 @@ dark xerox
 darkle
 darklier
 darkliest
+darlingly
+darlingness
+darlings
+darlingtonia
 das hole
 dasht
 dastard
@@ -5231,6 +5247,7 @@ dicycly
 dicyema
 dicyemid
 dicynodon
+did ou
 didn't it
 dido
 dies cumulative
@@ -5294,6 +5311,7 @@ disco on
 disco vary
 disco ward
 discumb
+disenslave
 disklike
 displeasured
 disputes cumulative
@@ -5342,6 +5360,7 @@ dix kerry
 dix kevin
 dix key
 dix ki
+dix kissing
 dix kl
 dix kn
 dix ko
@@ -5451,6 +5470,7 @@ drag queens
 dragonade
 dragonnade
 dragoonade
+dragooner
 drape
 draping
 dratchell
@@ -5906,7 +5926,9 @@ engines seeks
 engrandizement
 enneadic
 enola gay
-enslave
+enslaved
+enslavement
+enslaves
 ent its
 ent texts
 ent thick
@@ -5998,6 +6020,7 @@ eroticizing
 eroticomania
 erred skins
 erth little
+escort tum
 espathate
 ess cumulative
 ess ext
@@ -6423,6 +6446,12 @@ familiar append
 familiar reggae
 families blan
 fanal
+fantastic cocktail
+fantastic cook
+fantastic cookbook
+fantastic cooked
+fantastic cookie
+fantastic cooking
 faqs cumulative
 faqs ext
 faqs hilt
@@ -6838,6 +6867,7 @@ flux ker
 flux kevin
 flux key
 flux ki
+flux kissing
 flux kl
 flux kn
 flux ko
@@ -6917,6 +6947,7 @@ four somewhat
 four somewhere
 fourth little
 francoitalian
+frankmarriage
 fraunch
 freakdom
 freaked
@@ -7288,6 +7319,7 @@ go diego
 go dies
 go diet
 go ok
+go on
 go vary
 go vulnerability
 go vulnerable
@@ -7339,6 +7371,13 @@ goodwillies
 goodwives
 goofballs
 gooky
+goonch
+goonda
+goondie
+gooney
+goonie
+goons
+goony
 gorcock
 gos cumulative
 gos ext
@@ -7599,6 +7638,7 @@ hazards perm
 hazards seeks
 he eli
 he ell
+he error
 he illinois
 he liabilities
 he liability
@@ -7695,7 +7735,7 @@ heel lob
 heel loc
 heel lod
 heel log
-heel lol
+heel lolita
 heel lond
 heel lone
 heel long
@@ -7792,6 +7832,7 @@ henwife
 heptadic
 her bobby
 her pes
+her ro
 her rolling
 heraldic
 herbals
@@ -7839,6 +7880,7 @@ heterotic
 hexadic
 hexanal
 hi @Bla
+hi ju
 hi little
 hi tier
 hi tile
@@ -8314,6 +8356,7 @@ honest watts
 honeyballs
 honeysuck
 honeysucker
+honeysuckle
 hong rope
 hongs cumulative
 hongs ext
@@ -8469,7 +8512,7 @@ horn lob
 horn loc
 horn lod
 horn log
-horn lol
+horn lolita
 horn lond
 horn lone
 horn long
@@ -9284,6 +9327,7 @@ int wats
 int watts
 inter course
 interflange
+intermarriage
 interpenetration
 interpubic
 inters cumulative
@@ -9317,6 +9361,7 @@ involves perm
 involves seeks
 io ser
 io vary
+iolite
 ions cumulative
 ions ext
 ions hilt
@@ -9850,6 +9895,8 @@ kids lut
 kids perm
 kids seeks
 kijiji ink
+kijiji issn
+kijiji issue
 kijiji it
 kijiji kee
 kijiji keith
@@ -9942,6 +9989,7 @@ kijiji twenty
 kijiji twi
 kijiji ty
 kijiji yourself
+kijiji zs
 kilan
 kiliare
 kilkenny
@@ -9956,6 +10004,8 @@ kill analyze
 kill family
 kill ike
 kill ink
+kill issn
+kill issue
 kill it
 kill jewel
 kill kee
@@ -10050,12 +10100,108 @@ kill twelve
 kill twenty
 kill twi
 kill ty
+kill zs
 killed yourself
 killian
 killing jewel
 killing palestinian
 killing peoples
+kills sac
+kills sad
+kills safar
+kills safe
+kills sag
+kills sai
+kills sak
+kills sal
+kills sam
+kills san
+kills sap
+kills sar
+kills sas
+kills sat
+kills sau
+kills sav
+kills say
+kills sb
+kills sc
+kills se
+kills seeks
 kills self
+kills senior
+kills sha
+kills she
+kills sheet
+kills shell
+kills shiel
+kills shift
+kills shin
+kills ship
+kills shirt
+kills sho
+kills shoes
+kills shu
+kills si
+kills similar
+kills simple
+kills simplified
+kills simply
+kills simpson
+kills sixth
+kills sk
+kills sl
+kills sm
+kills sn
+kills so
+kills sp
+kills spanking
+kills spice
+kills sq
+kills sta
+kills ste
+kills stick
+kills still
+kills stock
+kills stole
+kills stoma
+kills stone
+kills stood
+kills stop
+kills stor
+kills str
+kills stu
+kills sty
+kills sub
+kills succeed
+kills succes
+kills such
+kills sud
+kills suf
+kills sugar
+kills sugg
+kills sui
+kills sull
+kills sum
+kills sun
+kills sunglasses
+kills sup
+kills sur
+kills sus
+kills sussex
+kills suz
+kills sw
+kills syd
+kills sym
+kills syn
+kills syr
+kills sys
+kills za
+kills zdnet
+kills zea
+kills zer
+kills zimb
+kills zinc
+kills zo
 kilt
 kinds cumulative
 kinds ext
@@ -10089,28 +10235,39 @@ kinkle
 kinkly
 kinks
 kirklike
-kiss assault
-kiss asse
-kiss assess
-kiss assi
-kiss assoc
-kiss assume
-kiss assuming
-kiss assumpt
-kiss assurance
-kiss assure
-kiss cumulative
-kiss ext
-kiss hilt
-kiss hit
-kiss lut
-kiss perm
-kiss seeks
+kiss of death
+kissability
+kissable
+kissably
+kissage
+kissar
+kissed
+kissel
+kisser
+kisses
+kissing
+kissing rope
+kissproof
+kisswise
+kissy
 kistful
 klangfarbe
 klanism
 klans
-knee ga
+knee gab
+knee gad
+knee gag
+knee gain
+knee gal
+knee gam
+knee gan
+knee gap
+knee gar
+knee gas
+knee gat
+knee gau
+knee gave
+knee gaz
 knicker
 knives cumulative
 knives ext
@@ -10742,6 +10899,38 @@ logs hit
 logs lut
 logs perm
 logs seeks
+lol i
+lol j
+lol l
+lol y
+lol!
+lol, i
+lol, j
+lol, l
+lol, y
+lol. i
+lol. j
+lol. l
+lol. y
+loliginidae
+loligo
+lolipop
+lolita
+lolita analog
+lolita analyse
+lolita analysis
+lolita analyst
+lolita analyt
+lolita analyze
+lolita assess
+lolita hole
+lolita holes
+lolita nail
+lolita reggae
+lolium
+loll
+lolls
+lolly
 longa
 longitude flower
 longitude generate
@@ -10882,6 +11071,9 @@ love efficiency
 love efficient
 love effort
 love making
+love young
+love your
+love youth
 loves cumulative
 loves ext
 loves hilt
@@ -10982,6 +11174,7 @@ magnitude flower
 magnitude generate
 mahoes
 maine coon
+make childrens
 makes cumulative
 makes ext
 makes hilt
@@ -11000,6 +11193,7 @@ mammillar
 mammilliform
 man paste
 manal
+mandate anyone
 mandate someone
 mannaia
 manufactured skins
@@ -11028,6 +11222,13 @@ marble peer
 marblish
 margay
 margays
+maria age
+maria gear
+maria gee
+maria gen
+maria geo
+maria ger
+maria get
 marina holes
 marina zimb
 marina zinc
@@ -11039,8 +11240,15 @@ markets lut
 markets perm
 markets seeks
 marlinsucker
+marriageability
+marriageable
+marriageproof
+marriages
 marrowfat
+marryer
+marrying
 marrymuffe
+marrys
 marse
 marsh aging
 marsh hilt
@@ -11421,6 +11629,7 @@ mises lut
 mises perm
 mises seeks
 mishit
+mismarriage
 mismenstruation
 mispick
 miss cumulative
@@ -11742,6 +11951,7 @@ muscles seeks
 musklike
 muskroot
 muslim kill
+muslims layer
 musselcracker
 mussuck
 mustard
@@ -11795,6 +12005,7 @@ myers seeks
 myrtle peer
 myth little
 mythifier
+n 1997
 n't eat
 nabobish
 nabobs
@@ -11912,7 +12123,6 @@ neck hi
 necklike
 necrophiliac
 needle peer
-neeger
 negara
 negate
 negating
@@ -12149,6 +12359,7 @@ nonfat
 nonfatty
 nonintercourse
 nonloser
+nonmarriage
 nonpenetration
 nonperversion
 nonperverted
@@ -12324,6 +12535,7 @@ odic kerry
 odic kevin
 odic key
 odic ki
+odic kissing
 odic kl
 odic kn
 odic ko
@@ -12663,6 +12875,7 @@ outers perm
 outers seeks
 outgaminged
 outligger
+outmarriage
 outromance
 outsuck
 outwatch
@@ -12753,6 +12966,7 @@ pack japan
 pack jewel
 pack junior
 pack ki
+pack kissing
 pack kl
 pack lab
 pack lac
@@ -12815,7 +13029,7 @@ pack lob
 pack loc
 pack lod
 pack log
-pack lol
+pack lolita
 pack lond
 pack lone
 pack long
@@ -13768,6 +13982,7 @@ posters perm
 posters seeks
 postfurca
 postgenital
+postmarriage
 postpuberty
 postpubescent
 postpubic
@@ -13857,6 +14072,8 @@ pressfat
 pretardily
 pretardiness
 pretardy
+pretty boys
+pretty girls
 prickado
 prickant
 pricked
@@ -13964,7 +14181,7 @@ prince lob
 prince loc
 prince lod
 prince log
-prince lol
+prince lolita
 prince lond
 prince lone
 prince long
@@ -14132,6 +14349,7 @@ prix ker
 prix kevin
 prix key
 prix ki
+prix kissing
 prix kl
 prix kn
 prix ko
@@ -14189,6 +14407,7 @@ projects hit
 projects lut
 projects perm
 projects seeks
+promarriage
 promo ron
 pronaoi
 pronaos
@@ -15067,6 +15286,7 @@ reel chub
 reel chuck
 reel church
 reel xhtml
+reenslave
 reerection
 rees cumulative
 rees ext
@@ -15127,6 +15347,7 @@ reid licking
 reid ongoing
 reimpregnate
 rejerk
+remarriage
 remedy kee
 remedy keith
 remedy kelk
@@ -15748,6 +15969,7 @@ scan ker
 scan kevin
 scan key
 scan ki
+scan kissing
 scan kl
 scan kn
 scan ko
@@ -16531,6 +16753,7 @@ since imagination
 since installing
 since l
 since liechtenstein
+since lolita
 since sta
 since ste
 since stick
@@ -16874,6 +17097,7 @@ span ker
 span kevin
 span key
 span ki
+span kissing
 span kl
 span kn
 span ko
@@ -17104,6 +17328,16 @@ sponsible peer
 spoorn
 sporadic
 sporopollenin
+spotlight assault
+spotlight asse
+spotlight assess
+spotlight assi
+spotlight assoc
+spotlight assume
+spotlight assuming
+spotlight assumpt
+spotlight assurance
+spotlight assure
 spotty
 spp
 sprightlier
@@ -17377,7 +17611,10 @@ suckerlike
 sucket
 suckfish
 suckhole
-suckle
+sucklebush
+suckled
+suckler
+suckles
 suckling
 suckstone
 sues cumulative
@@ -17636,6 +17873,8 @@ sys hit
 sys lut
 sys perm
 sys seeks
+t to heli
+t watch
 ta holes
 tabourine
 tackle peer
@@ -17815,15 +18054,18 @@ test ess
 test essex
 test est
 test establish
+test is
 test jess
 test jesu
 test leslie
 test less
 test lies
+test lis
 test test
 test test test
 test ties
 test tiles
+test tis
 testees
 testiest
 tests cumulative
@@ -18088,6 +18330,7 @@ thick ker
 thick kevin
 thick key
 thick ki
+thick kissing
 thick kl
 thick kn
 thick ko
@@ -18160,6 +18403,16 @@ ties lut
 ties perm
 ties seeks
 tigger
+tight assault
+tight asse
+tight assess
+tight assi
+tight assoc
+tight assume
+tight assuming
+tight assumpt
+tight assurance
+tight assure
 tight its
 tight texts
 tight thick
@@ -18559,6 +18812,7 @@ toshiba arling
 toshiba arri
 totanus
 touch children
+touch ours
 towcock
 towers cumulative
 towers ext
@@ -18829,6 +19083,7 @@ twin ker
 twin kevin
 twin key
 twin ki
+twin kissing
 twin kl
 twin kn
 twin ko
@@ -18925,6 +19180,7 @@ undersexton
 undersuck
 undressed
 undresses
+unenslave
 unerotic
 unfatty
 ungropeable
@@ -18992,6 +19248,7 @@ up rick
 up skirt
 upanishadic
 upcock
+update anyone
 update someone
 updated someone
 updating someone
@@ -19361,7 +19618,7 @@ vince lob
 vince loc
 vince lod
 vince log
-vince lol
+vince lolita
 vince lond
 vince lone
 vince long
@@ -19485,6 +19742,7 @@ wan kerry
 wan kevin
 wan key
 wan ki
+wan kissing
 wan kl
 wan kn
 wan ko
@@ -19517,6 +19775,9 @@ warse
 washerwife
 washita
 wasn't it
+watch cornel
+watch corner
+watch cornwall
 watchdogging
 waters cumulative
 waters ext
@@ -19653,6 +19914,7 @@ whipcracker
 whisht
 whishted
 whisterpoop
+white boys
 white eye
 white powered
 white powerful
@@ -19948,7 +20210,7 @@ xnxx lob
 xnxx loc
 xnxx lod
 xnxx log
-xnxx lol
+xnxx lolita
 xnxx lond
 xnxx lone
 xnxx long

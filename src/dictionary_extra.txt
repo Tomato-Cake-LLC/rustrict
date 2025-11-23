@@ -1,6 +1,7 @@
 #8
 # of
 (until
+(litera
 2 secs
 3 secs
 4 secs
@@ -16,6 +17,7 @@
 0 secs
 300 bot
 600 bot
+t watch
 twinkie
 two secs
 three secs
@@ -53,6 +55,7 @@ bishi
 blogger
 bob's
 bonjor
+but troll
 of elchasai
 braig
 brain cell
@@ -148,6 +151,7 @@ in 199
 in june
 irl
 isn't it
+it it
 it, its
 it's a hole
 it's ex
@@ -163,6 +167,7 @@ my jewish
 is jewish
 or jewish
 to jewish
+hi just
 jeff
 jewish ancestry
 jewish background
@@ -177,18 +182,35 @@ katyusha the
 kian
 kill ike
 killian
+kiss of death
 kshatr
 last? it
 left it
 little hovercraft
 lmao
 lol
+lol!
+lol.
+lol. i
+lol, i
+lol i
+lol. j
+lol, j
+lol j
+lol. l
+lol, l
+lol l
+lol. y
+lol, y
+lol y
+lolipop
 magnacumlaude
 maine coon
 make a hole
 s expired
 minigame
 mini game
+n 1997
 n't eat
 negativly
 ngad
@@ -259,6 +281,7 @@ tit for tat
 titch
 title section
 tito
+t to heli
 to heli
 too heli
 to helicopter
@@ -275,6 +298,7 @@ virgin group
 virgin islands
 wassup
 wasn't it
+we did our
 wish i t
 wouldn't it
 xD i do
