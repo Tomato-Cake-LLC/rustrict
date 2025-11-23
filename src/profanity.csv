@@ -982,12 +982,16 @@ hookah,0,0,1,0,1
 hooker,0,0,3,0,0
 hooters,0,0,1,0,0
 hope u die,0,0,0,3,1
+hope u pass away,0,0,0,3,1
 hopeyoualldie,0,0,0,3,0
+hopeyouallpassaway,0,1,0,3,1
 hopeyoudie,0,0,0,3,0
+hopeyoupassaway,0,1,0,3,1
 hopeyourbrotherdies,0,1,0,3,1
 hopeyourbrotherpassesaway,0,1,0,3,1
 hopeyourentirefamilydies,0,1,0,3,1
 hopeyourentirefamilypassesaway,0,1,0,3,1
+hopeyourfamilydies,0,1,0,3,1
 hopeyourfamilypassesaway,0,1,0,3,1
 hopeyourfatherdies,0,1,0,3,1
 hopeyourfatherpassesaway,0,1,0,3,1
