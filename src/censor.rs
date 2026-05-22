@@ -70,11 +70,11 @@ struct InlineState {
     self_censoring: u8,
     /// Is the input completely safe.
     safe: bool,
-    #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+    #[cfg(feature = "find_false_positives")]
     match_ptrs: usize,
-    #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+    #[cfg(feature = "find_false_positives")]
     total_matches: usize,
-    #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+    #[cfg(feature = "find_false_positives")]
     total_match_characters: usize,
     /// Whether already appended a space at the end.
     space_appended: bool,
@@ -99,11 +99,11 @@ impl Default for InlineState {
             space_appended: false,
             done: false,
             last_pos: usize::MAX,
-            #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+            #[cfg(feature = "find_false_positives")]
             match_ptrs: 0,
-            #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+            #[cfg(feature = "find_false_positives")]
             total_matches: 0,
-            #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+            #[cfg(feature = "find_false_positives")]
             total_match_characters: 0,
         }
     }
@@ -313,17 +313,17 @@ impl<I: Iterator<Item = char>> Censor<I> {
         self.inline.typ | self.safe_self_censoring_and_spam_detection()
     }
 
-    #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+    #[cfg(feature = "find_false_positives")]
     pub fn match_ptrs(&self) -> usize {
         self.inline.match_ptrs
     }
 
-    #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+    #[cfg(feature = "find_false_positives")]
     pub fn total_matches(&self) -> usize {
         self.inline.total_matches
     }
 
-    #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+    #[cfg(feature = "find_false_positives")]
     pub fn total_match_characters(&self) -> usize {
         self.inline.total_match_characters
     }
@@ -421,11 +421,7 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
             let skippable = !raw_c.is_alphabetic() || is_whitespace(raw_c);
             let replacement = self.options.replacements.get(raw_c);
 
-            #[cfg(feature = "trace")]
-            println!(
-                "Read '{}', skippable={}, replacing with={:?}",
-                raw_c, skippable, replacement
-            );
+            tracing::trace!("Read '{}', skippable={}, replacing with={:?}", raw_c, skippable, replacement);
 
             const BLOCK_ELEMENTS: RangeInclusive<char> = '\u{2580}'..='\u{259F}';
 
@@ -525,11 +521,7 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                     replacement_counted = true;
                 }
 
-                #[cfg(feature = "trace")]
-                println!(
-                    " - Replacement '{}', benign={}, countable={}",
-                    c, benign_replacement, countable_replacement
-                );
+                tracing::trace!(" - Replacement '{}', benign={}, countable={}", c, benign_replacement, countable_replacement);
 
                 // These separators don't invalidate a false-positive match.
                 //
@@ -548,18 +540,13 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                         || m.skipped > 5
                         || (m.node.word && m.repetitions > 20)
                     {
-                        #[cfg(feature = "trace")]
-                        println!("throwing out low confidence match: \"{}\"", m.node.trace);
+                        tracing::trace!("throwing out low confidence match: \"{}\"", m.node.trace);
                         //continue;
                     }
 
                     safety_end = safety_end.min(m.start);
 
-                    #[cfg(feature = "trace")]
-                    println!(
-                        "  - Consider match \"{}\" with spaces={}, replacements={}",
-                        m.node.trace, m.spaces, m.replacements
-                    );
+                    tracing::trace!("  - Consider match \"{}\" with spaces={}, replacements={}", m.node.trace, m.spaces, m.replacements);
 
                     if (skippable || c == m.last || Some(c) == m.node.last)
                         && m.start != pos.unwrap_or(0)
@@ -589,8 +576,7 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                             last: c,
                             ..m
                         };
-                        #[cfg(feature = "trace")]
-                        println!("    (keep with last={}, node last={:?}, spaces={}, skip={}, repl={}, repet={})", undo_m.last, undo_m.node.last, undo_m.spaces, undo_m.skipped, undo_m.replacements, undo_m.repetitions);
+                        tracing::trace!("    (keep with last={}, node last={:?}, spaces={}, skip={}, repl={}, repet={})", undo_m.last, undo_m.node.last, undo_m.spaces, undo_m.skipped, undo_m.replacements, undo_m.repetitions);
 
                         if let Some(existing) = self.allocated.matches.get(&undo_m) {
                             let replacement = existing.combine(&undo_m);
@@ -618,11 +604,7 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                             ..m
                         };
 
-                        #[cfg(feature = "trace")]
-                        println!(
-                            "     - Next is \"{}\", with spaces={}, replacements={}",
-                            next.trace, next_m.spaces, next_m.replacements
-                        );
+                        tracing::trace!("     - Next is \"{}\", with spaces={}, replacements={}", next.trace, next_m.spaces, next_m.replacements);
 
                         if next.word {
                             if next_m.node.typ.is(Type::SAFE)
@@ -633,8 +615,7 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                                 && !self.options.ignore_false_positives
                             {
                                 // Everything in the input until now is safe.
-                                #[cfg(feature = "trace")]
-                                println!("found safe word: {}", next_m.node.trace);
+                                tracing::debug!("found safe word: {}", next_m.node.trace);
                                 self.inline.safe = true;
                             }
 
@@ -665,8 +646,7 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                                 && !self.options.ignore_false_positives
                             {
                                 // Is false positive, so invalidate internal matches.
-                                #[cfg(feature = "trace")]
-                                println!("Found false positive {}", next_m.node.trace);
+                                tracing::debug!("Found false positive {}", next_m.node.trace);
                                 drain_start = Some(
                                     drain_start
                                         .map(|start| start.min(next_m.start))
@@ -698,14 +678,12 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
             let detections = &mut self.allocated.detections;
 
             pending_commit.retain(|pending| {
-                #[cfg(feature = "trace")]
-                println!("Consider whether to cancel pending commit {} with start={} against drain_start={:?}", pending.node.trace, pending.start, drain_start);
+                tracing::trace!("Consider whether to cancel pending commit {} with start={} against drain_start={:?}", pending.node.trace, pending.start, drain_start);
 
                 // Cancel due to false positive.
                 if let Some(start) = drain_start {
                     if pending.start >= start {
-                        #[cfg(feature = "trace")]
-                        println!("Cancelled {}", pending.node.trace);
+                        tracing::debug!("Cancelled {}", pending.node.trace);
                         return false;
                     }
                 }
@@ -719,15 +697,15 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                         options.censor_first_character_threshold,
                         options.censor_replacement,
                     ) {
-                        #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+                        #[cfg(feature = "find_false_positives")]
                         {
                             inline.match_ptrs ^= pending.node as *const _ as usize;
                             inline.total_matches += 1;
                             inline.total_match_characters += pending.end - pending.start;
-                            #[cfg(feature = "trace_full")]
-                            {
-                                *detections.entry(pending.node.trace.clone()).or_default() += 1;
-                            }
+                        }
+                        #[cfg(feature = "trace_full")]
+                        {
+                            *detections.entry(pending.node.trace.clone()).or_default() += 1;
                         }
                     }
                     return false;
@@ -757,9 +735,8 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
         }
 
         let residual = mem::take(&mut self.allocated.pending_commit);
-        #[cfg(feature = "trace")]
         if !residual.is_empty() {
-            println!("{} residuals", residual.len());
+            tracing::debug!("{} residuals", residual.len());
         }
         for pending in residual {
             if pending.commit(
@@ -769,19 +746,19 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                 self.options.censor_first_character_threshold,
                 self.options.censor_replacement,
             ) {
-                #[cfg(any(feature = "find_false_positives", feature = "trace"))]
+                #[cfg(feature = "find_false_positives")]
                 {
                     self.inline.match_ptrs ^= pending.node as *const _ as usize;
                     self.inline.total_matches += 1;
                     self.inline.total_match_characters += pending.end - pending.start;
-                    #[cfg(feature = "trace_full")]
-                    {
-                        *self
-                            .allocated
-                            .detections
-                            .entry(pending.node.trace.clone())
-                            .or_default() += 1;
-                    }
+                }
+                #[cfg(feature = "trace_full")]
+                {
+                    *self
+                        .allocated
+                        .detections
+                        .entry(pending.node.trace.clone())
+                        .or_default() += 1;
                 }
             }
         }

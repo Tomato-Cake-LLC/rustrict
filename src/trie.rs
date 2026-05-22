@@ -59,7 +59,6 @@ pub(crate) struct Node {
     pub depth: u8,
     /// Character from parent to self.
     pub last: Option<char>,
-    #[cfg(feature = "trace")]
     pub trace: String,
 }
 
@@ -74,7 +73,6 @@ impl Trie {
                 typ: Type::NONE,
                 depth: 0,
                 last: None,
-                #[cfg(feature = "trace")]
                 trace: String::new(),
             },
         }
@@ -127,7 +125,6 @@ impl Trie {
                 typ: Type::NONE,
                 depth: (i + 1) as u8,
                 last: Some(c),
-                #[cfg(feature = "trace")]
                 trace: word.chars().take(i + 1).collect(),
             });
         }

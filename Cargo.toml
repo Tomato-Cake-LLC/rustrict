@@ -27,10 +27,6 @@ name = "character_analyzer"
 path = "src/character_analyzer.rs"
 required-features = ["imageproc", "image", "rusttype", "unicode-width", "walkdir", "rayon"]
 
-[[bin]]
-name = "trace"
-path = "src/trace.rs"
-required-features = ["trace"]
 
 [[bin]]
 name = "add_profanity"
@@ -46,8 +42,7 @@ width = ["lazy_static", "itertools"]
 pii = ["lazy_static", "regex"]
 find_false_positives = ["censor", "regex", "indicatif", "rayon"]
 find_replacements = ["csv"]
-trace = ["censor"]
-trace_full = ["trace"]
+trace_full = ["censor"]
 serde = ["dep:serde", "arrayvec/serde"]
 
 [package.metadata.docs.rs]
@@ -76,6 +71,7 @@ rusttype = {version = "0.9", optional = true}
 image = {version = "0.23.14", optional = true}
 walkdir = {version = "2", optional = true}
 serde = {version = "1", features=["derive"], optional = true}
+tracing = "0.1"
 
 [dev-dependencies]
 rand = "0.8"

@@ -104,29 +104,23 @@ impl Match {
         censor_first_character_threshold: Type,
         censor_replacement: char,
     ) -> bool {
-        #[cfg(feature = "trace")]
-        print!(
-            "Committing {} with begin_separate={}, spaces={}, skipped={}, end_separate={}, depth={}, replacements={}, lcr={}, contains_space={}: ",
-            self.node.trace,
-            self.begin_separate,
-            self.spaces,
-            self.skipped,
-            self.end_separate,
-            self.node.depth,
-            self.replacements,
-            self.low_confidence_replacements,
-            self.node.contains_space
-        );
-
         let confidence = self.confidence();
 
         if confidence <= 0 {
-            #[cfg(feature = "trace")]
-            println!("rejected with confidence {confidence}");
+            tracing::debug!(
+                "Rejected {} (confidence={}, begin_separate={}, spaces={}, skipped={}, end_separate={}, depth={}, replacements={}, lcr={}, contains_space={})",
+                self.node.trace, confidence, self.begin_separate, self.spaces, self.skipped,
+                self.end_separate, self.node.depth, self.replacements,
+                self.low_confidence_replacements, self.node.contains_space
+            );
             return false;
         }
-        #[cfg(feature = "trace")]
-        println!("accepted with confidence {confidence}");
+        tracing::debug!(
+            "Committed {} (confidence={}, begin_separate={}, spaces={}, skipped={}, end_separate={}, depth={}, replacements={}, lcr={}, contains_space={})",
+            self.node.trace, confidence, self.begin_separate, self.spaces, self.skipped,
+            self.end_separate, self.node.depth, self.replacements,
+            self.low_confidence_replacements, self.node.contains_space
+        );
 
         /*
         let too_many_replacements = !(self.begin_separate
