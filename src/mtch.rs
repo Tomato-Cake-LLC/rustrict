@@ -163,6 +163,19 @@ impl Match {
         }
         */
 
+        // Skipping separators catches "f u c k", but it also fuses innocent neighbours across a
+        // real word boundary ("that. It" -> "tit"). Such a match is only credible if it begins
+        // where a word begins.
+        if (self.spaces > 0 || self.skipped > 0) && !self.begin_separate {
+            tracing::debug!(
+                "Rejected {} (fused mid-word: spaces={}, skipped={}, begin_separate=false)",
+                self.node.trace,
+                self.spaces,
+                self.skipped
+            );
+            return false;
+        }
+
         // Apply detection.
         *typ |= self.node.typ
             | if self.replacements >= 2 {

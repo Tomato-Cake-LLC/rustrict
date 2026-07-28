@@ -3,6 +3,8 @@ plss don't hurt me
 
 # Broken "positive" tests
 theRapist
+# fused mid-word across a separator; rejected by Match::commit
+Immaster hbating
 
 # replacement addition
 ебаная
