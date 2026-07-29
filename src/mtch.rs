@@ -27,6 +27,8 @@ pub(crate) struct Match {
     pub repetitions: u8,
     /// Stores how many low-confidence replacements took place while matching.
     pub low_confidence_replacements: u8,
+    /// Whether the match absorbed real whitespace, as opposed to punctuation inside a word.
+    pub crossed_whitespace: bool,
 }
 
 impl Match {
@@ -41,6 +43,7 @@ impl Match {
                 .low_confidence_replacements
                 .min(other.low_confidence_replacements),
             repetitions: self.repetitions.min(other.repetitions),
+            crossed_whitespace: self.crossed_whitespace && other.crossed_whitespace,
             last: self.last.min(other.last),
             ..*self
         }
@@ -116,10 +119,10 @@ impl Match {
             return false;
         }
         tracing::debug!(
-            "Committed {} (confidence={}, begin_separate={}, spaces={}, skipped={}, end_separate={}, depth={}, replacements={}, lcr={}, contains_space={})",
+            "Committed {} (confidence={}, begin_separate={}, spaces={}, skipped={}, end_separate={}, depth={}, replacements={}, lcr={}, contains_space={}, crossed_whitespace={})",
             self.node.trace, confidence, self.begin_separate, self.spaces, self.skipped,
             self.end_separate, self.node.depth, self.replacements,
-            self.low_confidence_replacements, self.node.contains_space
+            self.low_confidence_replacements, self.node.contains_space, self.crossed_whitespace
         );
 
         /*
@@ -172,6 +175,60 @@ impl Match {
                 self.node.trace,
                 self.spaces,
                 self.skipped
+            );
+            return false;
+        }
+
+        // Dropping characters to make a word fit ("F12 units" -> "f u") is only credible when the
+        // match also ends where a word ends, otherwise it is mining a longer token for a shorter
+        // word. Severe words are exempt: they are the ones actually worth obfuscating this way.
+        if self.skipped > 0 && !self.end_separate && self.node.typ.isnt(Type::SEVERE) {
+            tracing::debug!(
+                "Rejected {} (dropped characters and did not end a word: skipped={})",
+                self.node.trace,
+                self.skipped
+            );
+            return false;
+        }
+
+        // A short word is cheap to assemble by accident out of its neighbours ("as a rattle" ->
+        // ass), so swallowing whitespace only counts if the match also ends where a word ends.
+        // Long words aren't reachable by chance ("master bates") and severe ones are the only ones
+        // worth spacing out to evade a filter ("w ankers"), so both stay detected.
+        if self.crossed_whitespace
+            && !self.end_separate
+            && self.node.depth < 7
+            && self.node.typ.isnt(Type::SEVERE)
+        {
+            tracing::debug!(
+                "Rejected {} (short word fused across whitespace: spaces={}, depth={})",
+                self.node.trace,
+                self.spaces,
+                self.node.depth
+            );
+            return false;
+        }
+
+        // Every letter of the word came from a digit, so this is a number, not an evasion
+        // ("99.99%" -> pp). Evasions keep real letters, so "sh1t" and "a55hole" are unaffected.
+        if self.low_confidence_replacements as usize >= self.node.depth as usize {
+            tracing::debug!(
+                "Rejected {} (entirely digit-derived: lcr={}, depth={})",
+                self.node.trace,
+                self.low_confidence_replacements,
+                self.node.depth
+            );
+            return false;
+        }
+
+        // Same collision, other half: digit-derived letters plus dropped characters
+        // ("749. It" -> "tit").
+        if self.low_confidence_replacements > 0 && self.skipped > 0 {
+            tracing::debug!(
+                "Rejected {} (digit-derived letters over dropped characters: skipped={}, lcr={})",
+                self.node.trace,
+                self.skipped,
+                self.low_confidence_replacements
             );
             return false;
         }
