@@ -480,7 +480,7 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                             || begin_camel_case_word,
                         end_separate: false, // unknown at this time.
                         spaces: 0,
-                        crossed_whitespace: false,
+                        whitespace: 0,
                         skipped: 0,
                         replacements: 0,
                         repetitions: 0,
@@ -575,8 +575,9 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
 
                         let undo_m = Match {
                             spaces: m.spaces.saturating_add(new_space as u8),
-                            crossed_whitespace: m.crossed_whitespace
-                                || (new_space && raw_c.is_whitespace()),
+                            whitespace: m
+                                .whitespace
+                                .saturating_add((new_space && raw_c.is_whitespace()) as u8),
                             skipped: m.skipped.saturating_add(new_skip as u8),
                             replacements: m.replacements.saturating_add(new_replacement as u8),
                             low_confidence_replacements: m
@@ -606,8 +607,9 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                         let next_m = Match {
                             node: next,
                             spaces: m.spaces.saturating_add(new_space as u8),
-                            crossed_whitespace: m.crossed_whitespace
-                                || (new_space && raw_c.is_whitespace()),
+                            whitespace: m
+                                .whitespace
+                                .saturating_add((new_space && raw_c.is_whitespace()) as u8),
                             replacements: m.replacements.saturating_add(new_replacement as u8),
                             low_confidence_replacements: m
                                 .low_confidence_replacements
