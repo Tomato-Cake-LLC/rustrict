@@ -1,5 +1,3 @@
-#![feature(lazy_cell)]
-
 use std::{cmp::Ordering, collections::BTreeMap, io::stdin, str::FromStr, sync::LazyLock};
 
 const PATH: &str = "./src/profanity.csv";
