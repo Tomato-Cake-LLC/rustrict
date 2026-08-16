@@ -19,8 +19,16 @@ pub fn main() {
     export(&header, &entries);
 
     let mut line = String::new();
-    while let Ok(_) = stdin().read_line(&mut line) {
-        let (phrase, severity) = parse_line(&line[0..line.len() - 1]);
+    while let Ok(read) = stdin().read_line(&mut line) {
+        if read == 0 {
+            break;
+        }
+        let end = line.trim_end_matches(['\r', '\n']).len();
+        if end == 0 {
+            line.clear();
+            continue;
+        }
+        let (phrase, severity) = parse_line(&line[..end]);
 
         println!("adding {} with {severity:?}", phrase.0);
 

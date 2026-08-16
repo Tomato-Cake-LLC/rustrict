@@ -173,13 +173,13 @@ If your use-case is chat moderation, and you store data on a per-user basis, you
 ## Comparison
 
 To compare filters, the first 100,000 items of [this list](https://raw.githubusercontent.com/vzhou842/profanity-check/master/profanity_check/data/clean_data.csv)
-is used as a dataset. Positive accuracy is the percentage of profanity detected as profanity. Negative accuracy is the percentage of clean text detected as clean.
+is used as a dataset. Positive accuracy is the percentage of profanity detected as profanity. Negative accuracy is the percentage of clean text detected as clean. Time is benchmarked on one core of a AMD RYZEN AI MAX+ 395 in Balanced mode.
 
 | Crate | Accuracy | Positive Accuracy | Negative Accuracy | Time |
 |-------|----------|-------------------|-------------------|------|
-| [rustrict](https://crates.io/crates/rustrict) | 79.63% | 94.08% | 76.03% | 10s |
-| [censor](https://crates.io/crates/censor) | 76.16%   | 72.76%            | 77.01%            | 23s  |
-| [stfu](https://crates.io/crates/stfu) | 91.74% | 77.69% | 95.25% | 45s |
+| [rustrict](https://crates.io/crates/rustrict) | 80.01% | 94.07% | 76.50% | 6s |
+| [censor](https://crates.io/crates/censor) | 76.16% | 72.76% | 77.01% | 13s |
+| [stfu](https://crates.io/crates/stfu) | 91.74% | 77.69% | 95.25% | 29s |
 
 ## Development
 

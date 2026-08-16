@@ -93,6 +93,9 @@ fn maybe_false_positive<C: Iterator<Item = char> + Clone>(
             //    ak start = 3 end = 5
             for start in 0..=word.len() - len {
                 let end = start + len;
+                if !word.is_char_boundary(start) || !word.is_char_boundary(end) {
+                    continue;
+                }
                 let sub_slice = &word[start..end];
 
                 if sub_slice.len() >= shortest_subslice.len() {

@@ -18,6 +18,10 @@ replacements:
 add_profanity:
 	cargo run --bin add_profanity --features regex
 
+sort_dictionary_extra:
+	LC_ALL=C sort -u src/dictionary_extra.txt | grep -v '^$$' > src/dictionary_extra.txt.tmp
+	mv src/dictionary_extra.txt.tmp src/dictionary_extra.txt
+
 widths:
 	cargo run --bin character_analyzer --release --features imageproc,image,rusttype,walkdir,rayon,unicode-width
 
