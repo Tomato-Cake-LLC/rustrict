@@ -4,12 +4,8 @@ use std::collections::{BTreeMap, BTreeSet};
 fn main() {
     let mut replacements: BTreeMap<char, BTreeSet<char>> = BTreeMap::new();
 
-    let mut append_replacement = |(k, v): (char, String)| {
-        replacements
-            .entry(k)
-            .or_insert_with(BTreeSet::new)
-            .extend(v.chars())
-    };
+    let mut append_replacement =
+        |(k, v): (char, String)| replacements.entry(k).or_default().extend(v.chars());
 
     // Unicode confusables
     include_str!("unicode_confusables.txt")
@@ -102,7 +98,7 @@ fn main() {
             } else {
                 let escape = before_comma
                     .strip_prefix("\\u{")
-                    .expect(&format!("line {}", n + 1))
+                    .unwrap_or_else(|| panic!("line {}", n + 1))
                     .strip_suffix("}")
                     .unwrap();
                 let escape_int = u32::from_str_radix(escape, 16).unwrap();
@@ -147,7 +143,7 @@ fn main() {
         }
 
         writer
-            .write_record(&[&find.to_string(), &replace.iter().collect()])
+            .write_record([&find.to_string(), &replace.iter().collect()])
             .unwrap();
     }
     writer.flush().unwrap();

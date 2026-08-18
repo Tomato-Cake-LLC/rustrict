@@ -23,6 +23,9 @@ impl<T> FeatureCell<T> {
 
     /// SAFETY: Caller must avoid concurrent access, in accordance with documentation.
     #[cfg(feature = "customize")]
+    // The customize feature intentionally exposes this unsafe global-mutation primitive.
+    // Callers must uphold its no-concurrent-access contract.
+    #[allow(clippy::mut_from_ref)]
     pub unsafe fn get_mut(&self) -> &mut T {
         &mut *self.inner.get()
     }

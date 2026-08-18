@@ -11,7 +11,7 @@ lazy_static::lazy_static! {
 
         // First byte is mode length.
         let mut mode = [0u8];
-        raw.read(&mut mode).unwrap();
+        raw.read_exact(&mut mode).unwrap();
         let mode = mode[0];
 
         assert_eq!(mode, MODE_WIDTH);
@@ -31,7 +31,7 @@ lazy_static::lazy_static! {
 
             // After character comes a byte of length.
             let mut len = [0u8];
-            raw.read(&mut len).unwrap();
+            raw.read_exact(&mut len).unwrap();
             let len = len[0];
 
             widths.push((c, len));
@@ -85,7 +85,7 @@ pub enum WordBreak {
 /// For example, try selecting the following unbroken part: ௌௌௌௌ
 pub fn width_str_max_unbroken(s: &str, _word_break: WordBreak) -> usize {
     let mut start = 0;
-    break_all_linebreaks(&s)
+    break_all_linebreaks(s)
         .map(|p| {
             let unbroken = &s[start..p];
             start = p;
@@ -132,13 +132,15 @@ pub fn trim_to_width(s: &str, mut budget: usize) -> &str {
             None => return &s[..idx],
         }
     }
-    return s;
+    s
 }
 
 #[cfg(test)]
 mod test {
     use crate::width::{trim_to_width, width_str, WordBreak};
-    use crate::{width, width_str_max_unbroken, CensorStr};
+    #[cfg(feature = "censor")]
+    use crate::CensorStr;
+    use crate::{width, width_str_max_unbroken};
     use serial_test::serial;
 
     /*
@@ -223,6 +225,7 @@ mod test {
 
     #[test]
     #[serial]
+    #[cfg(feature = "censor")]
     pub fn tall() {
         assert_eq!("a꧁a".censor(), "aa");
     }

@@ -1,7 +1,5 @@
 #![feature(binary_heap_into_iter_sorted)]
 
-use image::{GrayImage, Luma, Rgb, RgbImage};
-use imageproc::drawing::draw_text_mut;
 use rayon::prelude::{IntoParallelIterator, ParallelIterator};
 use rusttype::{Font, Point, Scale};
 use std::ffi::OsStr;
@@ -103,6 +101,7 @@ fn main() {
 
     let output_file = OpenOptions::new()
         .create(true)
+        .truncate(true)
         .write(true)
         .open("./src/character_widths.bin")
         .unwrap();
@@ -117,7 +116,7 @@ fn main() {
         let mut tmp = [0u8; 4];
         let s = c.encode_utf8(&mut tmp);
         buffered.write_all(s.as_bytes()).unwrap();
-        buffered.write_all(&[max_width as u8]).unwrap();
+        buffered.write_all(&[max_width]).unwrap();
 
         if max_width > 60 {
             println!("character '{}' has width {}", c, max_width);
@@ -160,20 +159,4 @@ fn width(c: char, font: &Font) -> usize {
         });
 
     max.checked_sub(min).unwrap_or(0) as usize
-}
-
-fn render(c: char, font: &Font, resolution: u32) {
-    let mut image = GrayImage::new(resolution, resolution);
-
-    let height = resolution as f32;
-    let scale = Scale {
-        x: height,
-        y: height,
-    };
-
-    let mut tmp = [0u8; 4];
-    let text = c.encode_utf8(&mut tmp);
-    draw_text_mut(&mut image, Luma([255u8]), 0, 0, scale, &font, text);
-
-    let _ = image.save("image.png").unwrap();
 }

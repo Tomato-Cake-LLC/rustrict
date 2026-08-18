@@ -207,5 +207,5 @@ fn is_blocklisted(phrase: &str) -> bool {
 #[allow(dead_code)]
 fn is_sus(phrase: &str) -> bool {
     let trimmed = phrase.trim_end_matches('s');
-    PROFANITY.iter().any(|&p| p == trimmed)
+    PROFANITY.contains(&trimmed)
 }

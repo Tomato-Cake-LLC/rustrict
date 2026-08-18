@@ -16,9 +16,9 @@ lazy_static! {
             })
             // If you care about width, you probably also care about height.
             .chain(if cfg!(feature = "width") {
-                    ['\u{A9C1}', '\u{A9C2}'].as_slice().into_iter().copied()
+                    ['\u{A9C1}', '\u{A9C2}'].as_slice().iter().copied()
                 } else {
-                    [].as_slice().into_iter().copied()
+                    [].as_slice().iter().copied()
                 })
             .collect()
     ));

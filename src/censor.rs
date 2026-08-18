@@ -12,6 +12,9 @@ use std::ops::RangeInclusive;
 use std::str::Chars;
 use unicode_normalization::{Decompositions, Recompositions, UnicodeNormalization};
 
+type CensorBuffer<I> =
+    BufferProxyIterator<Recompositions<Filter<Decompositions<I>, fn(&char) -> bool>>>;
+
 /// Censor is a flexible profanity filter that can analyze and/or censor arbitrary text.
 ///
 /// You can also make use of `Censor` via traits `CensorStr` and `CensorIter`, which allow inline
@@ -19,7 +22,7 @@ use unicode_normalization::{Decompositions, Recompositions, UnicodeNormalization
 pub struct Censor<I: Iterator<Item = char>> {
     /// A buffer of the input that stores unconfirmed characters (may need to censor before flushing).
     /// This is so the censored output is unaffected by the subsequent iterator machinery.
-    buffer: BufferProxyIterator<Recompositions<Filter<Decompositions<I>, fn(&char) -> bool>>>,
+    buffer: CensorBuffer<I>,
     options: Options,
     inline: InlineState,
     allocated: AllocatedState,
@@ -140,6 +143,7 @@ impl AllocatedState {
 
 impl<'a> Censor<Chars<'a>> {
     /// Creates a `Censor` from a `&str`, ready to censor or analyze it.
+    #[allow(clippy::should_implement_trait)]
     pub fn from_str(s: &'a str) -> Self {
         Self::new(s.chars())
     }
@@ -156,9 +160,7 @@ impl<I: Iterator<Item = char>> Censor<I> {
         }
     }
 
-    fn buffer_from(
-        text: I,
-    ) -> BufferProxyIterator<Recompositions<Filter<Decompositions<I>, fn(&char) -> bool>>> {
+    fn buffer_from(text: I) -> CensorBuffer<I> {
         // Detects if a char isn't a diacritical mark (accent) or banned, such that such characters may be
         // filtered on that basis.
         fn filter_char(c: &char) -> bool {
@@ -286,7 +288,7 @@ impl<I: Iterator<Item = char>> Censor<I> {
     /// If called after analyze or a previous call to censor (except if reset is called in between).
     pub fn censor(&mut self) -> String {
         assert!(
-            !self.buffer.index().is_some(),
+            self.buffer.index().is_none(),
             "censor must be called before any other form of processing"
         );
         self.collect()
@@ -421,7 +423,12 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
             let skippable = !raw_c.is_alphabetic() || is_whitespace(raw_c);
             let replacement = self.options.replacements.get(raw_c);
 
-            tracing::trace!("Read '{}', skippable={}, replacing with={:?}", raw_c, skippable, replacement);
+            tracing::trace!(
+                "Read '{}', skippable={}, replacing with={:?}",
+                raw_c,
+                skippable,
+                replacement
+            );
 
             const BLOCK_ELEMENTS: RangeInclusive<char> = '\u{2580}'..='\u{259F}';
 
@@ -507,7 +514,7 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
             mem::swap(&mut self.allocated.matches, &mut self.allocated.matches_tmp);
             for c in replacement
                 .map(|a| a.as_str())
-                .unwrap_or(&&*raw_c.encode_utf8(&mut [0; 4]))
+                .unwrap_or(&*raw_c.encode_utf8(&mut [0; 4]))
                 .chars()
             {
                 // This replacement (uppercase to lower case) raises absolutely zero suspicion.
@@ -529,7 +536,12 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                     replacement_counted = true;
                 }
 
-                tracing::trace!(" - Replacement '{}', benign={}, countable={}", c, benign_replacement, countable_replacement);
+                tracing::trace!(
+                    " - Replacement '{}', benign={}, countable={}",
+                    c,
+                    benign_replacement,
+                    countable_replacement
+                );
 
                 // These separators don't invalidate a false-positive match.
                 //
@@ -554,7 +566,12 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
 
                     safety_end = safety_end.min(m.start);
 
-                    tracing::trace!("  - Consider match \"{}\" with spaces={}, replacements={}", m.node.trace, m.spaces, m.replacements);
+                    tracing::trace!(
+                        "  - Consider match \"{}\" with spaces={}, replacements={}",
+                        m.node.trace,
+                        m.spaces,
+                        m.replacements
+                    );
 
                     if (skippable || c == m.last || Some(c) == m.node.last)
                         && m.start != pos.unwrap_or(0)
@@ -618,7 +635,12 @@ impl<I: Iterator<Item = char>> Iterator for Censor<I> {
                             ..m
                         };
 
-                        tracing::trace!("     - Next is \"{}\", with spaces={}, replacements={}", next.trace, next_m.spaces, next_m.replacements);
+                        tracing::trace!(
+                            "     - Next is \"{}\", with spaces={}, replacements={}",
+                            next.trace,
+                            next_m.spaces,
+                            next_m.replacements
+                        );
 
                         if next.word {
                             if next_m.node.typ.is(Type::SAFE)
@@ -793,6 +815,7 @@ pub trait CensorStr: Sized {
     fn censor(self) -> String;
 
     /// Returns `true` if the text is inappropriate.
+    #[allow(clippy::wrong_self_convention)]
     fn is_inappropriate(self) -> bool {
         self.is(Type::INAPPROPRIATE)
     }
@@ -1188,7 +1211,7 @@ mod tests {
         let (total, positive, negative) = accuracy_of(checker, find_detections, compare_to);
         println!(
             "| [{}]({}) | {:.2}% | {:.2}% | {:.2}% | {:.2}s |",
-            link.split('/').last().unwrap(),
+            link.split('/').next_back().unwrap(),
             link,
             total * 100.0,
             positive * 100.0,
@@ -1254,7 +1277,7 @@ mod tests {
     #[serial]
     fn devanagari() {
         println!("f\u{0900}u\u{0900}c\u{0900}k");
-        const TEST: &'static str = "हत्यारा मकसहूद भाई तुम बड़ा मस्त काम करती।";
+        const TEST: &str = "हत्यारा मकसहूद भाई तुम बड़ा मस्त काम करती।";
         assert!(should_skip_censor(TEST));
         assert_eq!(TEST, TEST.censor());
     }

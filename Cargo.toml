@@ -12,6 +12,18 @@ exclude = ["fuzz/"]
 name = "rustrict"
 path = "src/lib.rs"
 
+[[example]]
+name = "advanced"
+required-features = ["censor"]
+
+[[example]]
+name = "analyze"
+required-features = ["censor"]
+
+[[example]]
+name = "censor"
+required-features = ["censor"]
+
 [[bin]]
 name = "false_positive_finder"
 path = "src/false_positive_finder.rs"
@@ -41,7 +53,7 @@ customize = ["censor"]
 width = ["lazy_static", "itertools"]
 pii = ["lazy_static", "regex"]
 find_false_positives = ["censor", "regex", "indicatif", "rayon"]
-find_replacements = ["csv"]
+find_replacements = ["csv", "unicode-normalization"]
 trace_full = ["censor"]
 serde = ["dep:serde", "arrayvec/serde"]
 
