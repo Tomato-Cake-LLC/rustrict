@@ -274,16 +274,3 @@ my chat is restricted
 cant talk
 cannot talk
 lets go
-
-# Benign terms found in Robotopia's production text corpus.
-smartwatch
-dicaprio
-fukushima
-chicken breast
-chicken breasts
-homo sapiens
-homo sapien
-freak out
-mix in german
-feel at ease
-since!
