@@ -42,11 +42,12 @@ z,s
 
 !,li
 @,a
+@,g
 4,a
 8,bHh
 6,bSs
 (,c
-<,c
+<,cx
 3,Beg
 9,gqp
 #,h
@@ -238,15 +239,21 @@ K,k
 Ȿ,Ss
 Ɀ,Zz
 Ⲁ,Aa
+ⲁ,a
 Ⲃ,Bb
 Ⲅ,Rr
 ⲅ,r
 Ⲉ,Ee
-Ⲋ,c
+ⲉ,e
+Ⲋ,cs
+ⲋ,cs
 Ⲍ,Zz
 Ⲏ,Hh
+ⲏ,h
 Ⲑ,Oo
+ⲑ,o
 Ⲓ,li
+ⲓ,li
 Ⲕ,Kk
 Ⲙ,Mm
 Ⲛ,Nn
@@ -1161,7 +1168,7 @@ B,Bb
 Ϝ,F
 ϝ,f
 Ϟ,Hn
-ϟ,Hn
+ϟ,HnSϟ
 Ϣ,Wy
 ϣ,wy
 Ϥ,qu
@@ -1691,7 +1698,9 @@ B,Bb
 ₿,B
 ß,B
 匚,C
+匸,C
 ㄩ,U
+凵,U
 千,FE
 £,Ef
 ₤,Ef
@@ -3640,6 +3649,7 @@ B,Bb
 ＄,S
 ¹,i1l
 丅,T
+丩,H
 丁,TJ
 T,T
 𐱅,hk
@@ -3697,3 +3707,10 @@ H,H
 һ,hn
 Һ,hn
 ╭,r╭
+
+∂,od
+∂,a
+江,I
+↯,Ss↯
+ꞓ,e
+Ꞓ,Ee
